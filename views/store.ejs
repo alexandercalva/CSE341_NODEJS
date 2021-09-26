@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('includes/head.ejs')%>
+</head>
+<body>
+    <header>
+        <%- include('includes/header.ejs')%>
+    </header>
+    <main>
+        <% if (bookList.length > 0) {%>
+            <div class="container">
+            <h1>My Books</h1>
+            <p>List of all the books...</p>
+           
+                <div class="grid">
+                    <% for (let book of bookList) { %>
+                    <article class="card book-item">
+                        <header class="card__header">
+                            <h1 class="title">Title: <span class="letras"><%=book.Title%></span></h1>
+                            <h1 class="title">ISBN: <span class="letras"><%=book.Book_ISBN%></span></h1>
+                            <h1 class="title">Author:<span class="letras"><%=book.Author%></span></h1>
+                            <h1 class="title">Year: <span class="letras"><%=book.PublishYear%></span></h1>
+                        </header>
+                        <form action="/admin/remove-book" method="POST">
+                            <button type="submit" class="btn btn-dark">Remove Book</button>
+                            <input type="hidden" value="<%= book.Book_ISBN%>" name="BookToDelete">
+                        </form>
+                    </article>
+                    <% } %>
+                </div>
+            </div>    
+            <% }  else {%>
+    <h1>No Books Found!</h1>
+                <% }%>
+    </main>
+    <footer>
+        <%- include('includes/footer.ejs')%>
+    </footer>
+</body>
+</html>
