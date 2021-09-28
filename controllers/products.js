@@ -15,12 +15,14 @@ exports.postAddProduct = (req, res, next) => {
     res.redirect('/');
 }
 exports.getProducts = (req, res, next) => { // Home
-    const books = Book.fetchAll();
-    res.render('store', {
-    bookList: books,
-    pageTitle: 'Shop',
-    path: 'Home'
-});
+    Book.fetchAll(books => {
+        res.render('store', {
+        bookList: books,
+        pageTitle: 'Shop',
+        path: 'Home'
+        });
+    });
+    
 }
 exports.deleteProduct = (req, res, next) => {
     const DeleteBook = req.body.BookToDelete;
