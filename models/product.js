@@ -16,7 +16,7 @@ const getProductFromFile = (cb) => {
       
    })
 }
-module.exports = class Book {
+module.exports = class Product {
     constructor(t){
         this.Title = t;
     }

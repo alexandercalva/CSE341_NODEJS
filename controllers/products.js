@@ -1,35 +1,35 @@
-const Book = require('../models/product');
+const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('add-book', {
-      pageTitle: 'Add Book',
+    res.render('add-product', {
+      pageTitle: 'Add Product',
       path: '/store'
     });
 }
 
 exports.postAddProduct = (req, res, next) => {
-    const book = new Book(req.body.Title);
-    book.save();
+    const product = new Product(req.body.Title);
+    product.save();
 
     
     res.redirect('/');
 }
 exports.getProducts = (req, res, next) => { // Home
-    Book.fetchAll(books => {
+    Product.fetchAll(products => {
         res.render('store', {
-        bookList: books,
+        productList: products,
         pageTitle: 'Shop',
         path: 'Home'
         });
     });
     
 }
-exports.deleteProduct = (req, res, next) => {
-    const DeleteBook = req.body.BookToDelete;
-    for(var i = 0, len = books.length; i < len; i++) {
-        if (books[i].Book_ISBN === DeleteBook) {
-            books.splice(i, 1);
+/*exports.deleteProduct = (req, res, next) => {
+    const DeleteProduct = req.body.ProductToDelete;
+    for(var i = 0, len = products.length; i < len; i++) {
+        if (products[i].ISBN === DeleteProduct) {
+            products.splice(i, 1);
             break;
         }
    }
-}
+}*/
