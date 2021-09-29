@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+<body>
+    <header>
+        <%- include('../includes/navigation.ejs')%>
+    </header>
+    <main>
+        <% if (productList.length > 0) {%>
+            <div class="container">
+            <h1>My Products</h1>
+            <p>List of all the products...</p>
+           
+                <div class="container fluidm d-flex justify-content-between" >
+                    <% for (let product of productList) { %>
+                    <article class="card product-item items">
+                        <header class="card__header">
+                            <h1 class="title"><span class="letras"><%=product.title%></span></h1>
+                        </header>
+                        <div class="card-image">
+                            <img src="<%= product.imageUrl %>" alt="<%= product.title%>" >
+                        </div>
+                        <div class="card-content">
+                            <h2 class="product-price">$<%= product.price %></h2>
+                            <p class="product-description"><%= product.description %></p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="/admin/edit-product" class="btn">Edit</a>
+                            <form action="/admin/delete-product" method="POST">
+                               <button type="submit" class="btn">Delete</button>
+                            </form>
+                        </div>
+                    </article>
+                    <% } %>
+                </div>
+            </div>    
+            <% }  else {%>
+    <h1>No Products Found!</h1>
+                <% }%>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+</html>

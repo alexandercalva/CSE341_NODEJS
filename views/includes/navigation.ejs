@@ -1,0 +1,29 @@
+  <header class="container-fluid">
+    <nav class="navbar navbar-dark bg-dark justify-content-center">
+        <ul>
+            <li>
+                <a class="<%= path === 'Home' ? 'active' : '' %>" href="/">Shop </a>
+            </li>
+            <li><a class="<%= path === '/' ? 'active' : '' %>" href="#">|</a></li>
+            <li>
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products </a>
+            </li>
+            <li><a class="<%= path === '/' ? 'active' : '' %>" href="#">|</a></li>
+            <li>
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart </a>
+            </li>
+            <li><a class="<%= path === '/' ? 'active' : '' %>" href="#">|</a></li>
+            <li>
+                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders </a>
+            </li>
+            <li><a class="<%= path === '/' ? 'active' : '' %>" href="#">|</a></li>
+            <li>
+                <a class="<%= path === 'NewProduct' ? 'active' : '' %>" href="/add-product">Add Product</a>
+            </li>
+            <li><a class="<%= path === '/' ? 'active' : '' %>" href="#">|</a></li>
+            <li>
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Admin Products</a> <!-- validate path with admin -->
+            </li>
+        </ul>
+    </nav>
+  </header>   

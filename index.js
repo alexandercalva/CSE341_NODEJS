@@ -8,7 +8,7 @@ app.set('views', 'views');
 
 //It's importing form other  js folders
 const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/menu');
+const shopRoutes = require('./routes/shop');
 //const storeRoutes = require('./routes/admin');
 const errorController = require('./controllers/error');
 app.use(bodyParser.urlencoded({extended: false}));

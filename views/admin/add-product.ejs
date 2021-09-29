@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+<body>
+    <header>
+        <%- include('../includes/navigation.ejs')%>
+    </header>
+    <main>
+  <div class="container">
+    <h1>Add Product!</h1>
+    <div style="width:300px; display:block;margin:auto; padding:7px;">
+        <form action="/add-product" method="POST"  class="d-flex flex-column"   >
+            <input type="text" placeholder="Insert Name of book" name="title" class="form-control" style="margin-bottom:10px;" required>
+            <input type="text" placeholder="Insert url" name="imageUrl" class="form-control" style="margin-bottom:10px;" required>
+            <input type="number" placeholder="Insert the price" name="price" class="form-control" style="margin-bottom:10px;" step="0.01" required>
+            <textarea placeholder="Insert description" name="description" id="description" rows="5" class="form-control"style="margin-bottom:10px;" required></textarea>
+            <button type="submit" class="btn btn-outline-secondary" style="color:white;" ><span style="padding:5px;border-radius:5px 5px;">Add</span> <i class="fas fa-book"style="padding-right:7px;" ></i></button>
+        </form>
+    </div>
+    
+    </main>
+    <footer>9
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+</html>
