@@ -6,12 +6,12 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <% if (productList.length > 0) { %>
+        <% if (prods.length > 0) { %>
             <div class="grid">
-                <% for (let product of productList) { %>
+                <% for (let product of prods) { %>
                     <article class="card product-item">
                         <header class="card__header">
-                            <h1 class="product_title"><%= product.name %></h1>
+                            <h1 class="product__title"><%= product.title %></h1>
                         </header>
                         <div class="card__image">
                             <img src="<%= product.imageUrl %>"
@@ -19,10 +19,10 @@
                         </div>
                         <div class="card__content">
                             <h2 class="product__price">$<%= product.price %></h2>
-                            <h5 class="product_title" style="text-align: center;"><%= product.tags %></h5>
                             <p class="product__description"><%= product.description %></p>
                         </div>
                         <div class="card__actions">
+                                <a href="/products/<%= product._id %>" class="btn">Details</a>
                             <%- include('../includes/add-to-cart.ejs', {product: product}) %>
                         </div>
                     </article>
@@ -32,4 +32,4 @@
             <h1>No Products Found!</h1>
         <% } %>
     </main>
-<%- include('../includes/footer.ejs') %>
+<%- include('../includes/end.ejs') %>
