@@ -4,3 +4,6 @@ npm install --save-dev nodemon
 
 
 //To install again the node_modules is => npm install
+
+npm install --save bcryptjs
+npm install --save connect-flash
