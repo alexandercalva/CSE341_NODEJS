@@ -1,19 +1,21 @@
-const Product = require('../models/product');
+const Product = require('../models/product'); // import model product
 
-exports.getAddProduct = (req, res, next) => {
-  res.render('admin/edit-product', {
+exports.getAddProduct = (req, res, next) => { // export function getAddProduct
+  res.render('admin/edit-product', {  // show view edit-product
     pageTitle: 'Add Product',
     path: '/admin/add-product',
     editing: false
   });
 };
 
-exports.postAddProduct = (req, res, next) => {
+exports.postAddProduct = (req, res, next) => {    // Function to add products
+  // Require all fields and store in consts
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product({
+
+  const product = new Product({  // Constructor products
     title: title,
     price: price,
     description: description,
@@ -32,21 +34,22 @@ exports.postAddProduct = (req, res, next) => {
     });
 };
 
-exports.getEditProduct = (req, res, next) => {
+exports.getEditProduct = (req, res, next) => {  // Function to get/edit product
   const editMode = req.query.edit;
   if (!editMode) {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findById(prodId)
+  Product.findById(prodId)    // Find a product by Id
     .then(product => {
       if (!product) {
         return res.redirect('/');
       }
+      // If product found is true
       res.render('admin/edit-product', {
         pageTitle: 'Edit Product',
         path: '/admin/edit-product',
-        editing: editMode,
+        editing: editMode,  // editMode is true
         product: product
       });
     })
@@ -54,13 +57,14 @@ exports.getEditProduct = (req, res, next) => {
 };
 
 exports.postEditProduct = (req, res, next) => {
+  // Get new fields of product edited
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
   const updatedDesc = req.body.description;
 
-  Product.findById(prodId)
+  Product.findById(prodId)   // Find product by Id for Update all fields
     .then(product => {
       product.title = updatedTitle;
       product.price = updatedPrice;
@@ -75,7 +79,7 @@ exports.postEditProduct = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-exports.getProducts = (req, res, next) => {
+exports.getProducts = (req, res, next) => {  // Get all products
   Product.find()
     // .select('title price -_id')
     // .populate('userId', 'name')
@@ -90,7 +94,7 @@ exports.getProducts = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-exports.postDeleteProduct = (req, res, next) => {
+exports.postDeleteProduct = (req, res, next) => {   // Delete products by Id
   const prodId = req.body.productId;
   Product.findByIdAndRemove(prodId)
     .then(() => {

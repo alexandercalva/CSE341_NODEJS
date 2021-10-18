@@ -8,9 +8,9 @@ const transporter = nodemailer.createTransport(sendgridTransport({
   }
 }));
 
-exports.getLogin = (req, res, next) => {
+exports.getLogin = (req, res, next) => { // Login
   let message = req.flash('error');
-  if (message.length > 0) {
+  if (message.length > 0) {  // Message for user is email or password is wrong
     message = message[0];
   } else {
     message = null;
@@ -22,7 +22,7 @@ exports.getLogin = (req, res, next) => {
   });
 };
 
-exports.getSignup = (req, res, next) => {
+exports.getSignup = (req, res, next) => { // Signup
   let message = req.flash('error');
   if (message.length > 0) {
     message = message[0];
@@ -36,7 +36,7 @@ exports.getSignup = (req, res, next) => {
   });
 };
 
-exports.postLogin = (req, res, next) => {
+exports.postLogin = (req, res, next) => { // Send fields to verify and permit access(LOGIN)
   const email = req.body.email;
   const password = req.body.password;
   User.findOne({ email: email })
@@ -46,7 +46,7 @@ exports.postLogin = (req, res, next) => {
         return res.redirect('/login');
       }
       bcrypt
-        .compare(password, user.password)
+        .compare(password, user.password)  // Compare password if this is correct
         .then(doMatch => {
           if (doMatch) {
             req.session.isLoggedIn = true;
@@ -67,7 +67,7 @@ exports.postLogin = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-exports.postSignup = (req, res, next) => {
+exports.postSignup = (req, res, next) => { // Send fields after of signup for save in database
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
@@ -79,7 +79,7 @@ exports.postSignup = (req, res, next) => {
         return res.redirect('/signup');
       }
       return bcrypt
-        .hash(password, 12)
+        .hash(password, 12) // Store the password with security
         .then(hashedPassword => {
           const user = new User({
             email: email,
@@ -92,7 +92,7 @@ exports.postSignup = (req, res, next) => {
           res.redirect('/login');
           return transporter.sendMail({
             to: email,
-            from: 'mail.com',
+            from: 'u.alexandercalva@gmail.com',
             subject: 'Signup succeeded!',
             html: '<h1>You successfully signed up! </h1>'
           });
