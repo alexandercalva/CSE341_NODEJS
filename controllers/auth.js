@@ -2,11 +2,19 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const User = require('../models/user');
-const transporter = nodemailer.createTransport(sendgridTransport({
+const transporter = nodemailer.createTransport({
+  host: "mail.multiservicios.xyz",
+  port: 465,
+  secure: true,
   auth: {
-    api_key: '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'
+    user: "register@multiservicios.xyz", // generated ethereal user
+    pass: "cse341Register" // generated ethereal password
   }
-}));
+  
+  /*auth: {
+    api_key: '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'
+  }*/
+});
 
 exports.getLogin = (req, res, next) => { // Login
   let message = req.flash('error');
@@ -83,6 +91,7 @@ exports.postSignup = (req, res, next) => { // Send fields after of signup for sa
         .then(hashedPassword => {
           const user = new User({
             email: email,
+            name: name,
             password: hashedPassword,
             cart: { items: [] }
           });
@@ -92,7 +101,7 @@ exports.postSignup = (req, res, next) => { // Send fields after of signup for sa
           res.redirect('/login');
           return transporter.sendMail({
             to: email,
-            from: 'u.alexandercalva@gmail.com',
+            from: 'register@multiservicios.xyz',
             subject: 'Signup succeeded!',
             html: '<h1>You successfully signed up! </h1>'
           });
