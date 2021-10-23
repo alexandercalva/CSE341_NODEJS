@@ -75,7 +75,7 @@ form {
 .main-header__item a.active,
 .main-header__item button:hover,
 .main-header__item button:active {
-  color: #d64933;
+  color:khaki;
 }
 
 .mobile-nav {
@@ -218,8 +218,8 @@ form {
   padding: 0.25rem 1rem;
   text-decoration: none;
   font: inherit;
-  border: 1px solid #00695c;
-  color: #00695c;
+  border: 1px solid #2b303a;
+  color: #2b303a;
   background: white;
   border-radius: 3px;
   cursor: pointer;
@@ -227,7 +227,7 @@ form {
 
 .btn:hover,
 .btn:active {
-  background-color: #00695c;
+  background-color: #2b303a;
   color: white;
 }
 

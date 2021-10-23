@@ -138,7 +138,9 @@ exports.getOrders = (req, res, next) => {
         path: '/orders',
         pageTitle: 'Your Orders',
         orders: orders
+       
       });
+      
     })
     .catch(err => {
       const error = new Error(err);

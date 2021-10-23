@@ -58,7 +58,7 @@ app.use((req, res, next) => {
         return next();
       }
       req.user = user;
-      req.name = user.name;
+      res.locals.name = user.name;
       next();
     })
     .catch(err => {

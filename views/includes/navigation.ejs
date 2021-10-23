@@ -36,8 +36,11 @@
                 </li>
             <% } else { %>
                 <li class="main-header__item">
-                   
-                    <form action="/logout" method="post">
+                    <a class="<%= path === '/orders' ? 'active' : '' %>" style="color:coral" href="/orders" ><%= name %> <i class="fas fa-cart-plus"></i></a>
+                    
+                </li>
+                <li class="main-header__item">
+                        <form action="/logout" method="post">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <button type="submit">Logout</button>
                     </form>
@@ -56,8 +59,9 @@
             <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
         </li>
         <% if (isAuthenticated) { %>
+            
             <li class="mobile-nav__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a> 
             </li>
             <li class="mobile-nav__item">
                 <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
@@ -79,12 +83,15 @@
                 <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
             </li>
         <% } else { %>
+           
             <li class="mobile-nav__item">
+              
                 <form action="/logout" method="post">
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <button type="submit">Logout</button>
                 </form>
             </li>
+           
         <% } %>
     </ul>
 </nav>
