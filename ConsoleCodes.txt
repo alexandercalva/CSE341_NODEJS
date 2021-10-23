@@ -8,4 +8,5 @@ npm install --save-dev nodemon
 npm install --save bcryptjs
 npm install --save connect-flash
 npm install --save nodemailer nodemailer-sendgrid-transport
+npm install --save express-validator
 
