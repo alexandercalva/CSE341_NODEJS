@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: "register@multiservicios.xyz", // generated ethereal user
-    pass: "cse341Register" // generated ethereal password
+    
   }
   /*auth: {
     api_key: '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'
