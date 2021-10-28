@@ -15,9 +15,7 @@ const transporter = nodemailer.createTransport({
     user: "register@multiservicios.xyz", // generated ethereal user
     
   }
-  /*auth: {
-    api_key: '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'
-  }*/
+  
 });
 
 exports.getLogin = (req, res, next) => {
